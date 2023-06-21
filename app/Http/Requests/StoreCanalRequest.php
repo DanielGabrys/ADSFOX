@@ -23,8 +23,10 @@ class StoreCanalRequest extends FormRequest
     public function rules(): array
     {
 
+        $id = $this->canal->id ?? 0;
+
         return [
-            'name' => ['required','min:3','max:255', Rule::unique('canals')->ignore($this->canal->id,'id')],
+            'name' => ['required','min:3','max:255', Rule::unique('canals') ->ignore($id,'id')],
             'amount' => ['required','integer','min:0'],
         ];
     }

@@ -19,8 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['prefix'=>'canals'],function ()
-{
-    Route::apiResource("canal",\App\Http\Controllers\Api\CanalController::class);
-}
-);
+Route::apiResource("canals",\App\Http\Controllers\Api\CanalController::class);
+
+
