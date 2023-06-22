@@ -2,10 +2,11 @@ import React, {useContext} from "react";
 import {CanalContext} from "../Context/CanalContext"
 import {useParams} from "react-router-dom";
 import {useEffect} from "react";
+import {CanalContextType} from "../../types/ContextCanal";
 
 export const CanalEdit = () =>
 {
-    const {formValues, onChange, getCanal, errors, updateCanal,setErrors} = useContext(CanalContext);
+    const {formValues, onChange, getCanal, errors, updateCanal,setErrors} = useContext(CanalContext) as CanalContextType;
     let {id} = useParams();
 
     useEffect(() =>

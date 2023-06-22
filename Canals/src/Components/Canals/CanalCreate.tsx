@@ -1,12 +1,13 @@
 
 import React, {useContext, useEffect} from "react";
 import {CanalContext} from "../Context/CanalContext"
+import {CanalContextType} from "../../types/ContextCanal";
 
 
 export const CanalCreate = () =>
 {
 
-    const {formValues, setFormValues, onChange,storeCanal, errors,setErrors} = useContext(CanalContext);
+    const {formValues, onChange,storeCanal, errors,setErrors} = useContext(CanalContext) as CanalContextType;
 
     useEffect( ()=>
         {

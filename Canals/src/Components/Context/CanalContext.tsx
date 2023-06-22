@@ -2,25 +2,29 @@ import {createContext, useState} from "react";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
 
+import {CanalContextType,ICanalsData} from "../../types/ContextCanal";
+
 axios.defaults.baseURL = "http://127.0.0.1:8001/api/"
 
-const CanalContext = createContext();
+const CanalContext = createContext<CanalContextType | null >(null);
 
-const initialForm =
+const  initialForm =
     {
+        id: null,
         name:'',
-        amount:'',
+        amount:"",
+        created_at: "",
+        updated_at: ""
     };
 
 
-export const CanalProvider = ({children}) =>
+export const CanalProvider = ({children}:any) =>
 {
 
-        const [canals,setCanals] = useState([]);
-        const [canal,setCanal] = useState([]);
+        const [canals,setCanals] = useState<Array<ICanalsData>>([]);
+        const [canal,setCanal] = useState<ICanalsData>(initialForm);
         const [errors,setErrors] = useState({});
         const navigate = useNavigate();
-        const [canalsData,setCanalsData] = useState([]);
 
 
 
@@ -29,9 +33,10 @@ export const CanalProvider = ({children}) =>
     {
         const apiCanals = await axios.get('canals');
         setCanals(apiCanals.data.data);
+
     };
 
-    const getCanal = async (id) =>
+    const getCanal = async (id:number) =>
     {
         const response = await axios.get('canals/'+id);
         const apiCanal = response.data.data;
@@ -39,8 +44,11 @@ export const CanalProvider = ({children}) =>
 
         setFormValues(
             {
+                id: null,
                 name: apiCanal.name,
-                amount: apiCanal.amount
+                amount: apiCanal.amount,
+                created_at: "",
+                updated_at: ""
             }
         );
 
@@ -52,7 +60,7 @@ export const CanalProvider = ({children}) =>
     );
 
 
-    const onChange = (e) => {
+    const onChange = (e:any) => {
         const {name,value} = e.target
         setFormValues({...formValues,[name]:value});
 
@@ -60,7 +68,7 @@ export const CanalProvider = ({children}) =>
 
 
 
-    const storeCanal = async (e) =>
+    const storeCanal = async (e:any) =>
     {
         e.preventDefault();
         try
@@ -69,7 +77,7 @@ export const CanalProvider = ({children}) =>
             setFormValues(initialForm);
             navigate('/canals');
         }
-        catch (e)
+        catch (e:any)
         {
             if(e.response.status !==200)
             {
@@ -79,7 +87,7 @@ export const CanalProvider = ({children}) =>
         }
     }
 
-    const updateCanal = async (e) =>
+    const updateCanal = async (e:any) =>
     {
         e.preventDefault();
         try
@@ -88,7 +96,7 @@ export const CanalProvider = ({children}) =>
             setFormValues(initialForm);
             navigate('/canals');
         }
-        catch (e)
+        catch (e:any)
         {
             if(e.response.status !==200)
             {
@@ -98,7 +106,7 @@ export const CanalProvider = ({children}) =>
         }
     }
 
-    const deleteCanal = async (id) =>
+    const deleteCanal = async (id:number) =>
     {
             await axios.delete("canals/"+id);
             getCanals();

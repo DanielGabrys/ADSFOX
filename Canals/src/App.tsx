@@ -1,17 +1,15 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React, { useState } from 'react'
+
 import './App.css'
 import {Routes, Route, Link} from "react-router-dom";
 
-import {Home} from "./Components/Home";
 import {CanalIndex} from "./Components/Canals/CanalIndex";
 import {CanalCreate} from "./Components/Canals/CanalCreate";
 import {CanalEdit} from "./Components/Canals/CanalEdit";
 import {CanalProvider} from "./Components/Context/CanalContext";
 
 
-function App() {
+const App:React.FC =() => {
   const [count, setCount] = useState(0)
 
   return (

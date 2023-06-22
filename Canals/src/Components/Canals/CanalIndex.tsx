@@ -4,16 +4,14 @@ import {useEffect} from "react";
 import {CanalContext} from "../Context/CanalContext"
 import {Link} from "react-router-dom"
 
-import {PieChart} from "../BarChart";
-
-
-
+import {PieChart} from "./BarChart";
+import {CanalContextType} from "../../types/ContextCanal";
 
 
 export const CanalIndex = () =>
 {
 
-    const {canals,getCanals,deleteCanal} = useContext(CanalContext);
+    const {canals,getCanals,deleteCanal} = useContext(CanalContext) as CanalContextType;
     useEffect(() =>
     {
         getCanals()

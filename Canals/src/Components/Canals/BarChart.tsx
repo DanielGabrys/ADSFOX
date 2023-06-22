@@ -17,6 +17,7 @@ import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { Pie } from "react-chartjs-2";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import {ICanalsData, IChartData} from "../../types/ContextCanal";
 
 
 ChartJS.register(
@@ -35,8 +36,8 @@ ChartJS.register(
 export const PieChart = () =>
 {
 
-    const [chartData, setChartData] = useState({
-        datasets: [],
+    const [chartData, setChartData] = useState<IChartData>({
+        datasets: [], labels: undefined
     });
 
     const [chartOptions, setChartOptions] = useState({});
@@ -50,10 +51,10 @@ export const PieChart = () =>
                     setChartData
                     (
                         {
-                            labels: response.data.data.map((data) => data.name),
+                            labels: response.data.data.map((data:ICanalsData) => data.name),
                             datasets: [{
                                 label: "Users amount",
-                                data: response.data.data.map((data) => data.amount),
+                                data: response.data.data.map((data:ICanalsData) => data.amount),
 
                             }]
 
@@ -77,10 +78,11 @@ export const PieChart = () =>
 
                             datalabels:
                                 {
-                                    formatter: (value, ctx) => {
+
+                                    formatter: (value:number, ctx:any) => {
                                         let sum = 0;
                                         let dataArr = ctx.chart.data.datasets[0].data;
-                                        dataArr.map(data => {
+                                        dataArr.map((data: number) => {
                                             sum += data;
                                         });
                                         let percentage = (value*100 / sum).toFixed(2)+"%";
@@ -100,9 +102,7 @@ export const PieChart = () =>
 
 
 
-
     }, []);
-
 
 
     return (
