@@ -19,7 +19,7 @@ function App() {
         <div className="App">
             <nav>
                 <ul>
-                    <li> <Link to="/"> Home </Link> </li>
+
                     <li> <Link to="/canals"> Canals </Link> </li>
                     <li> <Link to="/canals/create"> Create Canal </Link> </li>
 
@@ -27,7 +27,7 @@ function App() {
             </nav>
 
             <Routes>
-                <Route path="/" element={<Home/>} />
+                <Route path="/" element={<CanalIndex/>} />
                 <Route path="/canals" element={<CanalIndex/>} />
                 <Route path="/canals/create" element={<CanalCreate/>} />
                 <Route path="/canals/:id/edit" element={<CanalEdit/>} />

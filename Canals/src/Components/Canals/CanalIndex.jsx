@@ -1,17 +1,24 @@
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 
 import {useEffect} from "react";
 import {CanalContext} from "../Context/CanalContext"
-import {Link} from "react-router-dom";
+import {Link} from "react-router-dom"
+
+import {PieChart} from "../BarChart";
+
+
+
+
 
 export const CanalIndex = () =>
 {
+
     const {canals,getCanals,deleteCanal} = useContext(CanalContext);
     useEffect(() =>
     {
         getCanals()
 
-    },[])
+    },[]);
 
     return(
 
@@ -55,8 +62,13 @@ export const CanalIndex = () =>
 
                     </tbody>
                 </table>
+
             </div>
+
+
+            <PieChart/>
 
         </div>
     )
 }
+

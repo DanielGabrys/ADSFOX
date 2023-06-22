@@ -20,6 +20,8 @@ export const CanalProvider = ({children}) =>
         const [canal,setCanal] = useState([]);
         const [errors,setErrors] = useState({});
         const navigate = useNavigate();
+        const [canalsData,setCanalsData] = useState([]);
+
 
 
 
@@ -41,6 +43,7 @@ export const CanalProvider = ({children}) =>
                 amount: apiCanal.amount
             }
         );
+
 
     };
 
