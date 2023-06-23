@@ -61,6 +61,7 @@ export const CanalIndex = () =>
                     </tbody>
                 </table>
 
+
             </div>
 
 

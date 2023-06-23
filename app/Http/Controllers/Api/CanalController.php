@@ -13,7 +13,7 @@ class CanalController extends Controller
 {
     public function index()
     {
-        return CanalResource::collection(Canal::paginate(10));
+        return CanalResource::collection(Canal::all());
     }
 
     public function show(Canal $canal)
@@ -25,17 +25,19 @@ class CanalController extends Controller
     public function store(StoreCanalRequest $request)
     {
         Canal::create($request->validated());
+        return response()->json("created",);
     }
 
     public function update(StoreCanalRequest $request, Canal $canal)
     {
 
         $canal->update($request->validated());
-        return response()->json("updated");
+        return response()->json("updated",);
     }
 
     public function destroy(Canal $canal)
     {
         $canal->delete();
+        return response()->json("deleted",);
     }
 }
