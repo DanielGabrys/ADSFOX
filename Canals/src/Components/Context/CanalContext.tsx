@@ -18,6 +18,7 @@ const  initialForm =
     };
 
 
+
 export const CanalProvider = ({children}:any) =>
 {
 
@@ -31,8 +32,15 @@ export const CanalProvider = ({children}:any) =>
 
     const getCanals = async () =>
     {
-        const apiCanals = await axios.get('canals');
-        setCanals(apiCanals.data.data);
+        try {
+            const apiCanals = await axios.get('canals');
+            setCanals(apiCanals.data.data);
+        }
+        catch (e)
+        {
+            return [];
+        }
+
 
     };
 
