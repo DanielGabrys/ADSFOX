@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import './App.css'
+import './AppStyle.css'
 import {Routes, Route, Link} from "react-router-dom";
 
 import {CanalIndex} from "./Components/Canals/CanalIndex";
