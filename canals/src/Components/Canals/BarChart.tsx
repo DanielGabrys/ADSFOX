@@ -18,7 +18,6 @@ import { Pie } from "react-chartjs-2";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {ICanalsData, IChartData} from "../../types/ContextCanal";
-import useResizeObserver from "use-resize-observer";
 
 
 
@@ -49,7 +48,7 @@ export const PieChart = () =>
 
 
         async function fetchdata() {
-            const apiCanals = await axios.get('canals')
+            await axios.get('canals')
                 .then((response) => {
                     setChartData
                     (

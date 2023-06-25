@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 
 import {Routes, Route, Link, BrowserRouter} from "react-router-dom";
 
@@ -9,9 +8,10 @@ import {CanalProvider} from "./Components/Context/CanalContext";
 
 
 
-const App:React.FC =() => {
-  const [count, setCount] = useState(0)
 
+
+const App:React.FC =() => {
+  
   return (
 
     <BrowserRouter>
