@@ -11,16 +11,25 @@ import {CanalContextType} from "../../types/ContextCanal";
 export const CanalIndex = () =>
 {
 
-    const {canals,getCanals,deleteCanal} = useContext(CanalContext) as CanalContextType;
+    const {canals,getCanals,deleteCanal,notification,unsetNotification} = useContext(CanalContext) as CanalContextType;
     useEffect(() =>
     {
         getCanals()
+        unsetNotification();
 
     },[]);
 
     return(
 
         <div>
+
+            {notification &&
+            <div className="notification">
+                {notification}
+            </div>
+            }
+
+
 
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table className="w-full text-sm text-left text-blue-100 dark:text-blue-100">

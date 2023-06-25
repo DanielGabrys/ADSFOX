@@ -11,6 +11,10 @@ export type CanalContextType = {
     updateCanal: any,
     deleteCanal: any
     setErrors: any
+    notification: string
+    setNotification: any,
+    unsetNotification: () => void;
+
 
 };
 

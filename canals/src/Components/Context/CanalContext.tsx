@@ -25,9 +25,17 @@ export const CanalProvider = ({children}:any) =>
         const [canals,setCanals] = useState<Array<ICanalsData>>([]);
         const [canal,setCanal] = useState<ICanalsData>(initialForm);
         const [errors,setErrors] = useState({});
+        const [notification,setNotification] = useState('')
         const navigate = useNavigate();
 
 
+    const unsetNotification = ()    =>
+    {
+        setTimeout(()=>
+        {
+            setNotification('')
+        },2000);
+    }
 
 
     const getCanals = async () =>
@@ -92,6 +100,7 @@ export const CanalProvider = ({children}:any) =>
         try
         {
             await axios.post("canals",formValues);
+            setNotification("Canal was successfully created")
             setFormValues(initialForm);
             navigate('/canals');
         }
@@ -111,6 +120,7 @@ export const CanalProvider = ({children}:any) =>
         try
         {
             await axios.put("canals/"+canal.id,formValues);
+            setNotification("Canal was successfully updated")
             setFormValues(initialForm);
             navigate('/canals');
         }
@@ -127,6 +137,7 @@ export const CanalProvider = ({children}:any) =>
     const deleteCanal = async (id:number) =>
     {
             await axios.delete("canals/"+id);
+            setNotification("Canal was successfully deleted")
             getCanals();
     }
 
@@ -147,6 +158,9 @@ export const CanalProvider = ({children}:any) =>
             updateCanal,
             deleteCanal,
             setErrors,
+            notification,
+            setNotification,
+            unsetNotification,
         }}>{children}</CanalContext.Provider>;
 
 };

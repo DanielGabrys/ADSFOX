@@ -5,18 +5,20 @@ import {CanalIndex} from "./Components/Canals/CanalIndex";
 import {CanalCreate} from "./Components/Canals/CanalCreate";
 import {CanalEdit} from "./Components/Canals/CanalEdit";
 import {CanalProvider} from "./Components/Context/CanalContext";
-
-
-
+import { useContext } from "react";
+import { CanalContext } from "./Components/Context/CanalContext";
+import { CanalContextType } from "./types/ContextCanal";
 
 
 const App:React.FC =() => {
   
+
   return (
 
     <BrowserRouter>
 
       <CanalProvider>
+
         <div className="App">
 
             <nav>
