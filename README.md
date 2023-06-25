@@ -4,6 +4,10 @@
 
 ### BACKEND:
 
+install dependencies
+
+> composer update
+
 set up Laravel .env file with database credentials
 
 ```
