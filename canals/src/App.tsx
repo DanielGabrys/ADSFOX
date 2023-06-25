@@ -18,11 +18,12 @@ const App:React.FC =() => {
 
       <CanalProvider>
         <div className="App">
-            <nav>
-                <ul>
 
-                         <li> <Link to="/canals"> Canals </Link> </li>
-                         <li> <Link to="/canals/create"> Create Canal </Link> </li>
+            <nav>
+                <ul className="flex">
+
+                         <li className="m-2 p-2 bg-green-500 hover:bg-green:700 rounded-md"> <Link to="/canals"> Canals </Link> </li>
+                         <li className="m-2 p-2 bg-green-500 hover:bg-green:700 rounded-md"> <Link to="/canals/create"> Create Canal </Link> </li>
                 
                 </ul>
             </nav>

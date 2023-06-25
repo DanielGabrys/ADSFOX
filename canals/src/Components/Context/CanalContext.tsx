@@ -4,7 +4,9 @@ import {useNavigate} from "react-router-dom";
 
 import {CanalContextType,ICanalsData} from "../../types/ContextCanal";
 
-axios.defaults.baseURL = "http://127.0.0.1:8001/api/"
+axios.defaults.baseURL = process.env.REACT_APP_API_HOST
+
+
 
 const CanalContext = createContext<CanalContextType | null >(null);
 
