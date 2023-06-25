@@ -29,13 +29,13 @@ const App:React.FC =() => {
             </nav>
 
 
-
-
                 <Routes>
                     <Route path="/" element={<CanalIndex/>} />
                     <Route path="/canals" element={<CanalIndex/>} />
                     <Route path="/canals/create" element={<CanalCreate/>} />
                     <Route path="/canals/:id/edit" element={<CanalEdit/>} />
+                    <Route path="*" element={<PageNotFound />} />
+
                 </Routes>
             
             
@@ -44,6 +44,15 @@ const App:React.FC =() => {
       </BrowserRouter>
 
   )
+
+  function PageNotFound() {
+    return (
+      <div>
+        <h2>404 Page not found</h2>
+      </div>
+    );}
+
+
 }
 
 export default App

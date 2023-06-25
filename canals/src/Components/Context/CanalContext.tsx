@@ -6,8 +6,6 @@ import {CanalContextType,ICanalsData} from "../../types/ContextCanal";
 
 axios.defaults.baseURL = process.env.REACT_APP_API_HOST
 
-
-
 const CanalContext = createContext<CanalContextType | null >(null);
 
 const  initialForm =
@@ -39,9 +37,9 @@ export const CanalProvider = ({children}:any) =>
             setCanals(apiCanals.data.data);
             
         }
-        catch (e)
+        catch (e:any)
         {
-            return [];
+            setCanals([])
         }
 
 
@@ -49,6 +47,9 @@ export const CanalProvider = ({children}:any) =>
 
     const getCanal = async (id:number) =>
     {
+
+        try
+        {
         const response = await axios.get('canals/'+id);
         const apiCanal = response.data.data;
         setCanal(apiCanal);
@@ -62,6 +63,12 @@ export const CanalProvider = ({children}:any) =>
                 updated_at: ""
             }
         );
+
+        }
+        catch (e:any)
+        {
+            navigate ('canals/create')
+        }
 
 
     };

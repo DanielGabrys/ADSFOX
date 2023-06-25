@@ -4,7 +4,7 @@ import {useEffect} from "react";
 import {CanalContext} from "../Context/CanalContext"
 import {Link} from "react-router-dom"
 
-import {PieChart} from "./BarChart";
+import { PieChart } from "./BarChart";
 import {CanalContextType} from "../../types/ContextCanal";
 
 
