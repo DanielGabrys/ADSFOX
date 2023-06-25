@@ -3,6 +3,9 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import App from '../App';
 
+// to solve problem with testing chart
+import ResizeObserver from 'resize-observer-polyfill';
+global.ResizeObserver = ResizeObserver;
 
 /**
  * @jest-environment jsdom
