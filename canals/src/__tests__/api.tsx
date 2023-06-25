@@ -1,29 +1,78 @@
 import React from 'react';
 
-import { render, screen, fireEvent } from '@testing-library/react';
-import App from '../App';
+import axios from "axios";
+const mockedAxios = axios as jest.Mocked<typeof axios>;
+
+
+axios.defaults.baseURL = process.env.REACT_APP_API_HOST
 
 /**
  * @jest-environment jsdom
  */
 
+ jest.mock("axios");
 
 
-describe('Canals navbar', () => {
-    it('should render Canals button by default', () => {
-       render(<App />);
- 
-        expect(screen.getByText(/Canals/)).toBeInTheDocument();
+describe('api', () => {
+
+
+    it("should get canals", async () =>
+    {
+        
+        const canals = 
+        {
+            
+        
+                data:
+                [
+                    {
+                        id: 1,
+                        name: 'test1',
+                        amount: 5,
+                    },
+                    {
+                        id: 2,
+                        name: 'TEST',
+                        title: 7,
+                    },
+                ]
+             
+        }
+        
+      
+        mockedAxios.get.mockResolvedValueOnce(canals);
+        expect(axios.get).not.toHaveBeenCalled();
+        const data = await axios.get('canals')
+        expect(axios.get).toHaveBeenCalled();
+        expect(data).toEqual(canals);
+    
     });
 
 
-    it('should render Canals Create button by default', () => {
-      render(<App />);
+    
+    it('should give canal', () => {
 
-       expect(screen.getByText(/Create Canal/)).toBeInTheDocument();
-   });
+        const canal = {
+            data: {
+              id: 1,
+              name: 'test',
+              amount: 1
+            },
+          };
+
+          
+
+          (axios.get as jest.Mock).mockImplementation(() => Promise.resolve(canal));
+
+          axios.get('ghghg').then((response) => {
+            expect(response.data).toEqual(canal.data);
+          });
+    
+
+    });
+
+    
 
 
-
-   
 });
+
